@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <style>
+        /* Navbar */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Seção Sobre Mim */
+        .sobre {
+            padding: 60px 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .sobre-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .sobre-texto {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .sobre-texto h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        .sobre-texto p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .sobre-imagem {
+            flex: 1;
+            text-align: center;
+        }
+
+        .sobre-imagem img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Seção Habilidades */
+        .habilidades {
+            padding: 60px 0;
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+        }
+
+        .habilidades h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        .habilidades p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .habilidades-lista {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .habilidade-item {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        .barra-progresso {
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 25px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .progresso {
+            background-color: #333;
+            height: 100%;
+            border-radius: 5px 0 0 5px;
+        }
+
+        /* Seção Projetos */
+        .projetos {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+        }
+
+        .projetos h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        .projetos p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .projetos-lista {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .projeto-item {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .projeto-item:hover {
+            background-color: #e0e0e0;
+        }
+
+        .detalhes-projeto {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Seção Contato */
+        .contato {
+            padding: 60px 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        .contato h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        .contato p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Estilos da Calculadora */
+        .calculadora {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            width: 220px;
+            padding: 10px;
+            margin: 20px auto;
+        }
+
+        .display {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: right;
+            padding: 10px;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .botões {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .botão {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .botão.operador {
+            background-color: #f2a900;
+            color: #fff;
+        }
+
+        .botão.igual {
+            background-color: #4caf50;
+            color: #fff;
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="#">Meu Site</a></h1>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Seção Sobre Mim -->
+
+    <section id="sobre" class="sobre">
+        <div class="container sobre-container">
+            <div class="sobre-texto">
+                <h2>Sobre Mim</h2>
+                <p>Olá! Eu sou Henrique, um desenvolvedor web com paixão por criar interfaces de usuário limpas, eficientes e funcionais. Tenho uma forte base em HTML, CSS e JavaScript, o que me permite transformar ideias em experiências digitais impactantes. Gosto de trabalhar em projetos desafiadores, onde posso aplicar minha criatividade e habilidades técnicas para resolver problemas e entregar resultados de alta qualidade. Meu foco está sempre em aprender e evoluir, acompanhando as últimas tendências e melhores práticas em desenvolvimento web. Estou animado para colaborar em projetos inovadores e contribuir para a construção da web.</p>
+            </div>
+            <div class="sobre-imagem">
+                <img src="https://via.placeholder.com/300" alt="Foto do Desenvolvedor">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Habilidades -->
+
+    <section id="habilidades" class="habilidades">
+        <h2>Habilidades</h2>
+        <p>Aqui estão algumas das minhas habilidades técnicas:</p>
+        <div class="habilidades-lista">
+            <div class="habilidade-item">
+                <h3>HTML</h3>
+                <div class="barra-progresso">
+                    <div class="progresso" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="habilidade-item">
+                <h3>CSS</h3>
+                <div class="barra-progresso">
+                    <div class="progresso" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="habilidade-item">
+                <h3>JavaScript</h3>
+                <div class="barra-progresso">
+                    <div class="progresso" style="width: 40%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Projetos -->
+
+    <section id="projetos" class="projetos">
+        <h2>Projetos</h2>
+        <p>Veja alguns dos meus projetos recentes:</p>
+        <div class="projetos-lista">
+            <div class="projeto-item" onclick="toggleDetalhes('jogo-adivinha')">
+                <h3>Jogo de Adivinhação</h3>
+                <div id="detalhes-jogo-adivinha" class="detalhes-projeto">
+                    <p>Um simples jogo de adivinhação onde o jogador tenta adivinhar um número aleatório entre 1 e 100.</p>
+                    <script>
+                        function iniciarJogo() {
+                            const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+                            let tentativas = 0;
+
+                            document.getElementById('submit-jogo').addEventListener('click', function() {
+                                const palpite = parseInt(document.getElementById('palpite').value);
+                                tentativas++;
+
+                                if (palpite < numeroAleatorio) {
+                                    alert('Tente um número maior.');
+                                } else if (palpite > numeroAleatorio) {
+                                    alert('Tente um número menor.');
+                                } else {
+                                    alert(`Parabéns! Você acertou em ${tentativas} tentativas.`);
+                                    document.getElementById('palpite').value = '';
+                                    iniciarJogo();
+                                }
+                            });
+                        }
+                        iniciarJogo();
+                    </script>
+                    <input type="number" id="palpite" placeholder="Digite seu palpite">
+                    <button id="submit-jogo">Enviar</button>
+                </div>
+            </div>
+            <div class="projeto-item" onclick="toggleDetalhes('calculadora')">
+                <h3>Calculadora</h3>
+                <div id="detalhes-calculadora" class="detalhes-projeto">
+                    <p>Uma calculadora básica com operações de adição, subtração, multiplicação e divisão.</p>
+                    <div class="calculadora">
+                        <div class="display" id="display">0</div>
+                        <div class="botões">
+                            <button class="botão" onclick="adicionarNumero('7')">7</button>
+                            <button class="botão" onclick="adicionarNumero('8')">8</button>
+                            <button class="botão" onclick="adicionarNumero('9')">9</button>
+                            <button class="botão operador" onclick="setOperacao('/')">/</button>
+
+                            <button class="botão" onclick="adicionarNumero('4')">4</button>
+                            <button class="botão" onclick="adicionarNumero('5')">5</button>
+                            <button class="botão" onclick="adicionarNumero('6')">6</button>
+                            <button class="botão operador" onclick="setOperacao('*')">*</button>
+
+                            <button class="botão" onclick="adicionarNumero('1')">1</button>
+                            <button class="botão" onclick="adicionarNumero('2')">2</button>
+                            <button class="botão" onclick="adicionarNumero('3')">3</button>
+                            <button class="botão operador" onclick="setOperacao('-')">-</button>
+
+                            <button class="botão" onclick="adicionarNumero('0')">0</button>
+                            <button class="botão" onclick="adicionarNumero('.')">.</button>
+                            <button class="botão igual" onclick="calcular()">=</button>
+                            <button class="botão operador" onclick="setOperacao('+')">+</button>
+                        </div>
+                    </div>
+                    <script>
+                        let operacaoAtual = '';
+                        let numeroAtual = '';
+                        let valorAnterior = '';
+                        let operador = '';
+
+                        function adicionarNumero(numero) {
+                            if (numeroAtual === '0' && numero !== '.') {
+                                numeroAtual = numero;
+                            } else {
+                                numeroAtual += numero;
+                            }
+                            atualizarDisplay();
+                        }
+
+                        function atualizarDisplay() {
+                            document.getElementById('display').innerText = numeroAtual;
+                        }
+
+                        function setOperacao(op) {
+                            if (numeroAtual === '') return;
+                            if (valorAnterior !== '') {
+                                calcular();
+                            }
+                            operador = op;
+                            valorAnterior = numeroAtual;
+                            numeroAtual = '';
+                        }
+
+                        function calcular() {
+                            if (valorAnterior === '' || numeroAtual === '') return;
+                            let resultado;
+                            const num1 = parseFloat(valorAnterior);
+                            const num2 = parseFloat(numeroAtual);
+
+                            switch (operador) {
+                                case '+':
+                                    resultado = num1 + num2;
+                                    break;
+                                case '-':
+                                    resultado = num1 - num2;
+                                    break;
+                                case '*':
+                                    resultado = num1 * num2;
+                                    break;
+                                case '/':
+                                    resultado = num1 / num2;
+                                    break;
+                                default:
+                                    return;
+                            }
+                            numeroAtual = resultado.toString();
+                            operador = '';
+                            valorAnterior = '';
+                            atualizarDisplay();
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+     
+    <section id="contato" class="contato">
+        <h2>Contato</h2>
+        <p>Entre em contato comigo se você tiver alguma dúvida ou quiser discutir um projeto:</p>
+        <form action="mailto:seu-email@exemplo.com" method="post" enctype="text/plain">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <script>
+        function toggleDetalhes(id) {
+            const detalhes = document.getElementById(`detalhes-${id}`);
+            detalhes.style.display = detalhes.style.display === 'none' || detalhes.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
